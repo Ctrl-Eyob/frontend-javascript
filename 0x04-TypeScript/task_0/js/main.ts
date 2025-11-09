@@ -1,47 +1,39 @@
-interface Student {
-  firstName: string;
-  lastName: string;
-  age: number;
-  location: string;
-  }
+// Define the Teacher interface
+interface Teacher {
+  readonly firstName: string;         // only modifiable at initialization
+  readonly lastName: string;          // only modifiable at initialization
+  fullTimeEmployee: boolean;          // always defined
+  yearsOfExperience?: number;         // optional
+  location: string;                   // always defined
+  [key: string]: any;                 // allow any extra properties
+}
 
-  const student1: Student = {
-  firstName: "Eyob",
-  lastName: "Abera",
-  age: 21,
-  location: "Addis Ababa",
+// Create example teachers
+const teacher1: Teacher = {
+  firstName: 'John',
+  lastName: 'Doe',
+  fullTimeEmployee: true,
+  location: 'London',
+  yearsOfExperience: 5,
 };
 
-const student2: Student = {
-  firstName: "Sara",
-  lastName: "Tesfaye",
-  age: 22,
-  location: "Adama",
+const teacher2: Teacher = {
+  firstName: 'Jane',
+  lastName: 'Smith',
+  fullTimeEmployee: false,
+  location: 'New York',
+  contract: true, // extra property
 };
 
-const studentsList: Student[] = [student1, student2];
-const table = document.createElement("table");
-const headerRow = document.createElement("tr");
-const header1 = document.createElement("th");
-header1.textContent = "First Name";
-const header2 = document.createElement("th");
-header2.textContent = "Location";
+// Test example
+const teacher3: Teacher = {
+  firstName: 'John',
+  lastName: 'Doe',
+  fullTimeEmployee: false,
+  location: 'London',
+  contract: false,
+};
 
-headerRow.appendChild(header1);
-headerRow.appendChild(header2);
-table.appendChild(headerRow);
-studentsList.forEach((student) => {
-  const row = document.createElement("tr");
-  const firstNameCell = document.createElement("td");
-  firstNameCell.textContent = student.firstName;
-
-  const locationCell = document.createElement("td");
-  locationCell.textContent = student.location;
-
-  row.appendChild(firstNameCell);
-  row.appendChild(locationCell);
-
-  table.appendChild(row);
-});
-
-document.body.appendChild(table);
+console.log(teacher1);
+console.log(teacher2);
+console.log(teacher3);
